@@ -43,6 +43,9 @@ print('Training set', train_dataset.shape, train_labels.shape)
 print('Validation set', valid_dataset.shape, valid_labels.shape)
 print('Test set', test_dataset.shape, test_labels.shape)
 
+
+#BUILD GRAPH
+
 train_subset = 10000
 graph = tf.Graph()
 with graph.as_default():
@@ -71,4 +74,21 @@ with graph.as_default():
     train_predict = tf.nn.softmax(logits)
     valid_predict = tf.nn.softmax(tf.matmul(tf_valid_dataset,weight)+biases)
     test_predict = tf.nn.softmax(tf.matmul(tf_test_dataset,weight)+biases)
+    
+#ITERATE:
+num_steps = 800
+def accuracy(predictions, labels):
+    return(100.0*(np.sum(np.argmax(predictions,1) == np.argmax(labels,1))/predictions.shape[0]))
+
+with tf.Session(graph = graph) as session:
+    tf.global_variables_initializer().run()
+    print("INIt")
+    for step in range(num_steps):
+        _,l,predictions = session.run([optimizer,loss,train_predict])
+        if( step %100 ==0):
+            print('Loss at step %d: %f' % (step, l))
+            print('Training accuracy: %.1f%%' % accuracy(predictions, train_labels[:train_subset, :]))
+            print('Validation accuracy: %.1f%%' % accuracy(valid_prediction.eval(), valid_labels))
+     print('Test accuracy: %.1f%%' % accuracy(test_prediction.eval(), test_labels))
+    
     
