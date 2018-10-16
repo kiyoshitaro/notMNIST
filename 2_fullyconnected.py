@@ -12,7 +12,7 @@ from six.moves import cPickle as pickle
 from six.moves import range
 import pandas as pd
 
-
+#
 pickle_file = 'notMNIST.pickle'
 
 save = pd.read_pickle( 'notMNIST.pickle')
