@@ -69,9 +69,18 @@ def build_dataset(words):
   return data, count, dictionary, reverse_dictionary
 
 data, count, dictionary, reverse_dictionary = build_dataset(words)
-print('Most common words (+UNK)', count[:5])
+print('Most common words', count[:5])
 print('Sample data', data[:10])
 del words  # Hint to reduce memory.
+
+
+
+
+
+
+
+
+
 
 #data_index = 0
 #
@@ -212,6 +221,7 @@ del words  # Hint to reduce memory.
 #plot(two_d_embeddings, words)
 
 
+
 #Problem
 #An alternative to skip-gram is another Word2Vec model called CBOW (Continuous Bag of Words).
 #In the CBOW model, instead of predicting a context word from a word vector, 
@@ -286,8 +296,8 @@ with graph.as_default(), tf.device('/cpu:0'):
     embeds = tf.nn.embedding_lookup(embeddings, train_dataset)
   # Compute the softmax loss, using a sample of the negative labels each time.
     loss = tf.reduce_mean(
-            tf.nn.sampled_softmax_loss(softmax_weights, softmax_biases, tf.reduce_sum(embeds, 1),
-                               train_labels, num_sampled, vocabulary_size))
+            tf.nn.sampled_softmax_loss(softmax_weights, softmax_biases, train_labels, tf.reduce_sum(embeds, 1),
+                                num_sampled, vocabulary_size))
 
   # Optimizer.
     optimizer = tf.train.AdagradOptimizer(1.0).minimize(loss)
