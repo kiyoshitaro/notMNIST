@@ -113,7 +113,6 @@ with tf.Session(graph=graph) as session:
         summary_str = mse_summary.eval(feed_dict=feed_dict)
 #        step = offset * n_batches + batch_index
         file_writer.add_summary(summary_str, step)
-
     _, l, predictions = session.run(
       [optimizer, loss, train_prediction], feed_dict=feed_dict)
     if (step % 500 == 0):
@@ -123,5 +122,6 @@ with tf.Session(graph=graph) as session:
         valid_prediction.eval(), valid_labels))
   print("Test accuracy: %.1f%%" % accuracy(test_prediction.eval(), test_labels))
 file_writer.close()    
+
 
     

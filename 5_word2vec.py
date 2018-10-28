@@ -72,6 +72,7 @@ def build_dataset(words):
 data, count, dictionary, reverse_dictionary = build_dataset(words)
 
 
+
 #count = [['UNK', 418391],
 # ('the', 1061396),
 # ('of', 593677),
@@ -83,7 +84,6 @@ data, count, dictionary, reverse_dictionary = build_dataset(words)
 
 
 print('Most common words', count[:5])
-
 print('Sample data', data[:10])
 del words  # Hint to reduce memory.
 
@@ -214,6 +214,7 @@ del words  # Hint to reduce memory.
 #                print(log)
 #    final_embeddings = normalized_embeddings.eval()
 
+
 #num_points = 400
 #
 #tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=5000, method='exact')
@@ -280,6 +281,7 @@ for bag_window in [1, 2]:
 #       [195],
 #       [  2]], dtype=int32)
 
+
 batch_size = 128
 embedding_size = 128 # Dimension of the embedding vector.
 ###skip_window = 1 # How many words to consider left and right.
@@ -315,6 +317,7 @@ with graph.as_default(), tf.device('/cpu:0'):
     embeds = tf.nn.embedding_lookup(embeddings, train_dataset)
   # Compute the softmax loss, using a sample of the negative labels each time.
     loss = tf.reduce_mean(
+
             tf.nn.sampled_softmax_loss(softmax_weights, softmax_biases, tf.reduce_sum(embeds, 1),
                                train_labels, num_sampled, vocabulary_size))
 
