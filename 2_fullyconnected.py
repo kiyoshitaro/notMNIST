@@ -46,7 +46,15 @@ print('Test set', test_dataset.shape, test_labels.shape)
 
 #BUILD GRAPH
 
+from datetime import datetime
+now = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+root_logdir = "tf_logs"
+logdir = "{}/run-{}/".format(root_logdir, now)
+
+
 train_subset = 10000
+batch_size = 128
+num_hidden_nodes = 1024
 
 graph = tf.Graph()
 with graph.as_default():
@@ -70,11 +78,14 @@ with graph.as_default():
   lay1_train = tf.nn.relu(tf.matmul(tf_train_dataset, weights1) + biases1)
   logits = tf.matmul(lay1_train, weights2) + biases2
   loss = tf.reduce_mean(
-    tf.nn.softmax_cross_entropy_with_logits(logits, tf_train_labels))
+    tf.nn.softmax_cross_entropy_with_logits(logits =logits, labels = tf_train_labels))
   
   # Optimizer.
   optimizer = tf.train.GradientDescentOptimizer(0.5).minimize(loss)
   
+  #Visualize 
+  mse_summary = tf.summary.scalar('MSE', loss)
+  file_writer = tf.summary.FileWriter(logdir, tf.get_default_graph())
   # Predict
   train_prediction = tf.nn.softmax(logits)
   lay1_valid = tf.nn.relu(tf.matmul(tf_valid_dataset, weights1) + biases1)
@@ -97,6 +108,11 @@ with tf.Session(graph=graph) as session:
     batch_data = train_dataset[offset:(offset + batch_size), :]
     batch_labels = train_labels[offset:(offset + batch_size), :]
     feed_dict = {tf_train_dataset : batch_data, tf_train_labels : batch_labels}
+
+    if step % 10 == 0:
+        summary_str = mse_summary.eval(feed_dict=feed_dict)
+#        step = offset * n_batches + batch_index
+        file_writer.add_summary(summary_str, step)
     _, l, predictions = session.run(
       [optimizer, loss, train_prediction], feed_dict=feed_dict)
     if (step % 500 == 0):
@@ -105,5 +121,5 @@ with tf.Session(graph=graph) as session:
       print("Validation accuracy: %.1f%%" % accuracy(
         valid_prediction.eval(), valid_labels))
   print("Test accuracy: %.1f%%" % accuracy(test_prediction.eval(), test_labels))
-    
+file_writer.close()    
     

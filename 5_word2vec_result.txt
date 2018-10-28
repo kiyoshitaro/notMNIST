@@ -1,0 +1,245 @@
+Data size 17005207
+Most common words [['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764)]
+Sample data [5234, 3081, 12, 6, 195, 2, 3134, 46, 59, 156]
+data: ['anarchism', 'originated', 'as', 'a', 'term', 'of', 'abuse', 'first', 'used', 'against', 'early', 'working', 'class', 'radicals', 'including', 'the']
+
+with bag_window = 1:
+    batch: [['anarchism', 'as'], ['originated', 'a'], ['as', 'term'], ['a', 'of']]
+    labels: ['originated', 'as', 'a', 'term']
+
+with bag_window = 2:
+    batch: [['anarchism', 'originated', 'a', 'term'], ['originated', 'as', 'term', 'of'], ['as', 'a', 'of', 'abuse'], ['a', 'term', 'abuse', 'first']]
+    labels: ['as', 'a', 'term', 'of']
+WARNING:tensorflow:From /home/kiyoshitaro/Desktop/code/notMNIST/5_word2vec.py:328: calling reduce_sum (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+Initialized
+Average loss at step 0: 8.257106
+Nearest to time: pentecost, holder, cometary, intelligence, barrelled, artery, aziz, elderly,
+Nearest to as: gur, foederati, establishment, fad, thermonuclear, strikeouts, scot, ingenuity,
+Nearest to his: pertwee, astrophysicist, ozzy, halfway, torre, maker, einhard, glamorous,
+Nearest to two: groin, bradley, develops, polaris, spectroscopy, bruce, teil, courtesy,
+Nearest to than: marching, albino, sanskrit, shane, hanover, cautions, dorothy, wiles,
+Nearest to many: araki, edirne, necessitating, vilhelm, budo, principals, tonality, neurath,
+Nearest to world: pty, steno, zimmer, divulge, ng, symbolising, centaurs, lavin,
+Nearest to would: cold, preamble, sybil, krafft, abruzzo, nagoya, haller, pits,
+Nearest to people: worded, compressibility, domo, statues, lear, tarr, gull, sanitary,
+Nearest to into: slogans, grandiose, pyroxene, hx, overwhelm, quincey, abkhazians, basing,
+Nearest to after: oysters, enrich, memories, whitfield, midwives, effectively, circulates, altar,
+Nearest to for: swede, deport, piran, acf, yusef, zeeland, suggestions, pang,
+Nearest to eight: logistics, unshielded, australia, castillo, mujahedin, tuesday, parent, militaristic,
+Nearest to on: trivium, bud, brainwashed, digraph, gcd, vultures, infinitum, harps,
+Nearest to in: thailand, skyscraper, implications, contracted, eg, miyamoto, emi, honouring,
+Nearest to use: chick, infrastructures, theta, jannaeus, jaffna, sac, adversaries, consumers,
+Average loss at step 2000: 4.571713
+Average loss at step 4000: 3.929919
+Average loss at step 6000: 3.733639
+Average loss at step 8000: 3.519243
+Average loss at step 10000: 3.481742
+Nearest to time: end, year, passions, least, causative, course, integer, vought,
+Nearest to as: groundwork, hilltops, endeavours, med, got, heraldry, taps, compaor,
+Nearest to his: their, her, its, the, johns, crunch, andalus, embryogenesis,
+Nearest to two: five, one, zero, seven, nine, four, laughed, ciphers,
+Nearest to than: hanover, or, chrono, lingua, wiser, spell, luftwaffe, transubstantiation,
+Nearest to many: some, several, most, other, various, these, draft, oahu,
+Nearest to world: amygdala, fundy, decibels, divulge, goalkeeper, country, u, sittings,
+Nearest to would: can, may, could, should, will, must, might, to,
+Nearest to people: fumes, heater, men, thermopylae, ateneo, isn, townshend, defining,
+Nearest to into: cei, abkhazians, from, nantucket, detached, during, byelorussian, daria,
+Nearest to after: before, sewers, banco, effectively, annulment, when, gautama, barents,
+Nearest to for: of, magnification, shahada, joual, must, wit, yusef, before,
+Nearest to eight: six, seven, nine, four, five, zero, three, two,
+Nearest to on: in, lineker, gottlieb, singaporean, girardeau, upon, detract, smyrna,
+Nearest to in: on, donnie, during, of, archaelogical, detract, from, has,
+Nearest to use: chick, consumers, krajina, ineffective, lipid, bacilli, jozef, garage,
+Average loss at step 12000: 3.485942
+Average loss at step 14000: 3.436247
+Average loss at step 16000: 3.435673
+Average loss at step 18000: 3.404965
+Average loss at step 20000: 3.214405
+Nearest to time: end, least, year, point, period, passions, catalogs, causative,
+Nearest to as: sweating, fontainebleau, vance, cubs, kilmer, sacerdotal, clippings, polling,
+Nearest to his: their, her, its, the, s, my, our, crunch,
+Nearest to two: three, nine, four, eight, five, six, seven, zero,
+Nearest to than: or, hanover, joanna, dum, chrono, wiser, videos, notices,
+Nearest to many: some, several, various, these, most, different, numerous, all,
+Nearest to world: decibels, ermine, divulge, angleton, jocular, sittings, crusading, fundy,
+Nearest to would: will, could, may, can, should, might, must, did,
+Nearest to people: individuals, gentle, them, lifespans, countries, those, sanctified, likelihood,
+Nearest to into: from, between, through, within, abkhazians, jared, during, austrians,
+Nearest to after: before, during, when, sewers, while, ezekiel, rorty, routledge,
+Nearest to for: deport, sacr, damp, including, joual, sib, within, sanfl,
+Nearest to eight: seven, nine, six, zero, five, three, four, two,
+Nearest to on: upon, in, lineker, booklet, about, smyrna, kimberley, hexameter,
+Nearest to in: during, within, since, on, until, through, archivist, handicap,
+Nearest to use: share, krajina, form, greenpeace, element, selfish, gamblers, normans,
+Average loss at step 22000: 3.361519
+Average loss at step 24000: 3.284687
+Average loss at step 26000: 3.250214
+Average loss at step 28000: 3.283858
+Average loss at step 30000: 3.227191
+Nearest to time: least, year, end, passions, point, period, squares, trustees,
+Nearest to as: seton, sweating, became, meany, polling, overseers, initials, storks,
+Nearest to his: her, their, its, my, the, s, johns, our,
+Nearest to two: six, four, three, five, one, nine, eight, zero,
+Nearest to than: but, or, much, considerably, like, likely, wiser, spd,
+Nearest to many: some, several, various, most, all, both, few, these,
+Nearest to world: decibels, conserving, churches, divulge, tosk, prostaglandins, murron, unattractive,
+Nearest to would: could, will, may, can, should, must, might, did,
+Nearest to people: likelihood, individuals, those, members, them, countries, jews, things,
+Nearest to into: through, from, out, within, around, between, coa, screenwriter,
+Nearest to after: before, during, when, olde, until, within, upon, sewers,
+Nearest to for: dunkeld, convexity, utamaro, deviations, sacr, although, taiping, jade,
+Nearest to eight: seven, nine, six, four, zero, five, three, two,
+Nearest to on: upon, lineker, in, through, throughout, around, hartman, across,
+Nearest to in: within, during, through, since, between, on, of, until,
+Nearest to use: support, share, purpose, sense, storks, role, propulsion, form,
+Average loss at step 32000: 3.009871
+Average loss at step 34000: 3.199024
+Average loss at step 36000: 3.195675
+Average loss at step 38000: 3.162744
+Average loss at step 40000: 3.166776
+Nearest to time: least, point, year, times, diagram, night, battle, reorganization,
+Nearest to as: sacerdotal, heraldry, replayed, intercalary, workable, sweating, scotia, bezier,
+Nearest to his: her, their, its, my, our, your, the, astute,
+Nearest to two: five, three, four, six, nine, eight, zero, several,
+Nearest to than: or, but, and, while, hanover, unlike, benefitted, among,
+Nearest to many: some, several, various, most, numerous, all, few, binoculars,
+Nearest to world: hc, bayern, fl, habr, cart, decibels, u, korean,
+Nearest to would: will, could, should, must, may, can, might, cannot,
+Nearest to people: men, children, likelihood, players, things, members, jews, individuals,
+Nearest to into: through, within, toward, between, occupying, under, onto, out,
+Nearest to after: before, during, following, upon, when, lynyrd, watertown, through,
+Nearest to for: without, deviations, shahada, earner, dunkeld, quackery, taiping, restrained,
+Nearest to eight: seven, six, nine, five, four, three, zero, two,
+Nearest to on: upon, through, in, lineker, across, around, elmo, muriel,
+Nearest to in: within, during, on, throughout, since, donnie, handicap, until,
+Nearest to use: share, gamblers, speak, type, because, purpose, version, collapse,
+Average loss at step 42000: 3.210565
+Average loss at step 44000: 3.135626
+Average loss at step 46000: 3.135993
+Average loss at step 48000: 3.066912
+Average loss at step 50000: 3.062282
+Nearest to time: point, least, times, diagram, paramount, night, moment, shiite,
+Nearest to as: sweating, damien, seton, workable, lal, gbit, kish, progressions,
+Nearest to his: her, their, its, our, my, the, your, s,
+Nearest to two: three, five, four, eight, six, zero, seven, nine,
+Nearest to than: or, but, considerably, like, extractor, hanover, benefitted, tuscan,
+Nearest to many: some, several, various, all, numerous, number, certain, most,
+Nearest to world: fl, bayern, conserving, zachary, planar, country, korean, cart,
+Nearest to would: will, should, could, might, must, may, can, did,
+Nearest to people: players, jews, children, those, things, students, likelihood, members,
+Nearest to into: through, onto, around, within, toward, off, out, from,
+Nearest to after: before, during, when, following, until, since, despite, afterwards,
+Nearest to for: shahada, without, against, uniforms, when, legitimize, oud, aum,
+Nearest to eight: seven, nine, six, three, five, four, zero, two,
+Nearest to on: upon, through, lineker, in, tenn, around, smyrna, elmo,
+Nearest to in: during, within, throughout, until, since, despite, archivist, on,
+Nearest to use: support, share, practice, redshifted, purpose, faltering, popularity, used,
+Average loss at step 52000: 3.097240
+Average loss at step 54000: 3.093341
+Average loss at step 56000: 2.914201
+Average loss at step 58000: 3.022435
+Average loss at step 60000: 3.052610
+Nearest to time: least, times, point, period, battle, moment, year, night,
+Nearest to as: renamo, ezek, clemency, melts, chandler, rasterization, sensibilities, how,
+Nearest to his: her, their, its, my, your, s, our, the,
+Nearest to two: three, four, six, five, eight, nine, zero, one,
+Nearest to than: or, and, but, corel, multipoint, extractor, hellfire, itu,
+Nearest to many: some, several, various, numerous, these, all, both, number,
+Nearest to world: conserving, fl, bayern, cart, studio, tosk, europe, madman,
+Nearest to would: will, could, might, should, must, may, can, did,
+Nearest to people: players, languages, men, those, jews, children, authors, person,
+Nearest to into: through, from, between, off, toward, onto, under, around,
+Nearest to after: before, during, following, afterwards, despite, until, since, for,
+Nearest to for: shahada, after, without, kimmei, anthrax, deviations, within, against,
+Nearest to eight: nine, seven, six, five, three, four, zero, two,
+Nearest to on: upon, through, visigoth, under, about, around, in, outside,
+Nearest to in: within, during, throughout, at, on, until, outside, despite,
+Nearest to use: share, form, purpose, refer, feature, build, type, relapse,
+Average loss at step 62000: 3.018231
+Average loss at step 64000: 2.918822
+Average loss at step 66000: 2.943497
+Average loss at step 68000: 2.955801
+Average loss at step 70000: 3.007362
+Nearest to time: least, times, expense, moment, point, transfers, battle, lens,
+Nearest to as: tov, like, seton, renamo, workable, jovian, curia, ezek,
+Nearest to his: their, her, its, my, s, your, our, whose,
+Nearest to two: three, five, zero, four, six, eight, seven, one,
+Nearest to than: or, but, toppling, lz, corel, and, multipoint, itu,
+Nearest to many: several, some, various, numerous, all, most, both, number,
+Nearest to world: conserving, madman, cart, hansa, mechanised, abbott, termites, queen,
+Nearest to would: will, could, might, may, can, must, should, cannot,
+Nearest to people: men, players, jews, women, someone, individuals, children, them,
+Nearest to into: through, within, from, toward, on, under, occupying, onto,
+Nearest to after: before, during, following, within, when, afterwards, despite, for,
+Nearest to for: after, without, anthrax, thus, sacr, breaches, earner, hogg,
+Nearest to eight: nine, seven, five, six, zero, three, two, four,
+Nearest to on: upon, around, at, about, in, lineker, throughout, through,
+Nearest to in: during, throughout, within, outside, since, through, on, at,
+Nearest to use: consist, debugging, call, build, happen, need, share, usage,
+Average loss at step 72000: 2.945016
+Average loss at step 74000: 2.863612
+Average loss at step 76000: 2.995484
+Average loss at step 78000: 3.000221
+Average loss at step 80000: 2.843904
+Nearest to time: battle, times, moment, period, night, periods, age, least,
+Nearest to as: like, endeavours, sweating, prerogatives, renamo, cubs, clemency, modularity,
+Nearest to his: her, their, its, your, my, the, our, whose,
+Nearest to two: three, five, four, nine, six, apollonia, seven, one,
+Nearest to than: or, aired, unlike, like, corel, benefitted, lg, voroshilov,
+Nearest to many: some, several, various, all, numerous, most, thousands, both,
+Nearest to world: country, conserving, studio, grover, madman, cart, tosk, flaccus,
+Nearest to would: could, will, might, must, should, may, can, cannot,
+Nearest to people: men, someone, students, jews, children, players, individuals, person,
+Nearest to into: through, from, within, onto, out, toward, occupying, off,
+Nearest to after: before, during, following, afterwards, upon, when, until, ephedrine,
+Nearest to for: breaches, sacr, without, anthrax, carthaginian, alongside, orinoco, loosened,
+Nearest to eight: nine, seven, six, five, zero, four, three, million,
+Nearest to on: upon, in, behind, through, under, onto, visigoth, lineker,
+Nearest to in: within, during, through, throughout, on, outside, where, since,
+Nearest to use: consist, form, usage, debugging, share, type, happen, effectiveness,
+Average loss at step 82000: 2.935914
+Average loss at step 84000: 2.904564
+Average loss at step 86000: 2.921334
+Average loss at step 88000: 2.948137
+Average loss at step 90000: 2.837052
+Nearest to time: times, least, moment, period, battle, point, periods, end,
+Nearest to as: jovian, tov, like, elm, renamo, workable, dwindling, lal,
+Nearest to his: their, its, her, your, my, our, the, whose,
+Nearest to two: four, six, three, five, nine, one, moby, seven,
+Nearest to than: or, but, lg, unlike, benefitted, portillo, and, lz,
+Nearest to many: some, several, numerous, various, both, certain, all, most,
+Nearest to world: country, conserving, universe, grover, tosk, nation, hansa, fundy,
+Nearest to would: will, could, might, may, must, should, can, cannot,
+Nearest to people: men, children, someone, students, individuals, players, women, jews,
+Nearest to into: through, within, onto, from, across, toward, together, under,
+Nearest to after: before, during, until, afterwards, following, when, despite, upon,
+Nearest to for: anthrax, articulations, hence, among, sacr, earner, of, if,
+Nearest to eight: seven, four, six, five, nine, zero, three, million,
+Nearest to on: upon, through, behind, onto, lineker, in, into, hexameter,
+Nearest to in: within, outside, during, since, throughout, on, of, archivist,
+Nearest to use: share, consist, production, because, usage, labouring, list, support,
+Average loss at step 92000: 2.906556
+Average loss at step 94000: 2.883317
+Average loss at step 96000: 2.711858
+Average loss at step 98000: 2.458989
+Average loss at step 100000: 2.708676
+Nearest to time: moment, point, period, least, passions, battle, times, reorganization,
+Nearest to as: renamo, tov, like, endeavours, jovian, sweating, bandmates, boiled,
+Nearest to his: their, her, its, your, s, my, the, our,
+Nearest to two: five, four, three, six, seven, nine, zero, eight,
+Nearest to than: or, but, deliveries, negroes, lz, benefitted, fida, like,
+Nearest to many: some, several, numerous, various, both, multiple, certain, most,
+Nearest to world: fundy, korean, divulge, universe, conserving, creature, punic, user,
+Nearest to would: will, could, might, should, must, can, may, cannot,
+Nearest to people: individuals, children, students, someone, men, citizens, jews, persons,
+Nearest to into: through, across, onto, toward, within, from, down, in,
+Nearest to after: before, despite, following, afterwards, without, when, during, upon,
+Nearest to for: without, lipoproteins, shahada, earner, including, breaches, anthrax, articulations,
+Nearest to eight: six, seven, nine, four, five, three, zero, chapter,
+Nearest to on: upon, in, concerning, through, about, elmo, behind, hexameter,
+Nearest to in: during, within, outside, throughout, near, on, into, at,
+Nearest to use: usage, consist, root, support, production, practice, applauded, form,
+
+

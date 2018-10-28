@@ -45,6 +45,7 @@ def read_data(filename):
   return data
   
 words = read_data(filename)
+#words = ['the','of','and','one','in','a','to','zero','nine','two','is',....] 
 print('Data size %d' % len(words))
 
 vocabulary_size = 50000
@@ -69,6 +70,18 @@ def build_dataset(words):
   return data, count, dictionary, reverse_dictionary
 
 data, count, dictionary, reverse_dictionary = build_dataset(words)
+
+
+#count = [['UNK', 418391],
+# ('the', 1061396),
+# ('of', 593677),
+# ('and', 416629),
+# ('one', 411764),
+# ('in', 372201),...]
+#dictionary = {('UNK', 0), ('the', 1), ('of', 2), ('and', 3), ('one', 4), ('in', 5)}
+#data = [5234, 3081, 12, 6, 195, 2] ~ ['the','of','and','one','in','a']
+
+
 print('Most common words', count[:5])
 print('Sample data', data[:10])
 del words  # Hint to reduce memory.
@@ -84,38 +97,38 @@ del words  # Hint to reduce memory.
 
 #data_index = 0
 #
-#def generate_batch(batch_size, num_skips, skip_window):
-#  global data_index
-#  assert batch_size % num_skips == 0
-#  assert num_skips <= 2 * skip_window
-#  batch = np.ndarray(shape=(batch_size), dtype=np.int32)
-#  labels = np.ndarray(shape=(batch_size, 1), dtype=np.int32)
-#  span = 2 * skip_window + 1 # [ skip_window target skip_window ]
-#  buffer = collections.deque(maxlen=span)
-#  for _ in range(span):
-#    buffer.append(data[data_index])
-#    data_index = (data_index + 1) % len(data)
-#  for i in range(batch_size // num_skips):
-#    target = skip_window  # target label at the center of the buffer
-#    targets_to_avoid = [ skip_window ]
-#    for j in range(num_skips):
-#      while target in targets_to_avoid:
-#        target = random.randint(0, span - 1)
-#      targets_to_avoid.append(target)
-#      batch[i * num_skips + j] = buffer[skip_window]
-#      labels[i * num_skips + j, 0] = buffer[target]
-#    buffer.append(data[data_index])
-#    data_index = (data_index + 1) % len(data)
-#  return batch, labels
-#
-#print('data:', [reverse_dictionary[di] for di in data[:8]])
-#
-#for num_skips, skip_window in [(2, 1), (4, 2)]:
-#    data_index = 0
-#    batch, labels = generate_batch(batch_size=8, num_skips=num_skips, skip_window=skip_window)
-#    print('\nwith num_skips = %d and skip_window = %d:' % (num_skips, skip_window))
-#    print('    batch:', [reverse_dictionary[bi] for bi in batch])
-#    print('    labels:', [reverse_dictionary[li] for li in labels.reshape(8)])
+def generate_batch(batch_size, num_skips, skip_window):
+  global data_index
+  assert batch_size % num_skips == 0
+  assert num_skips <= 2 * skip_window
+  batch = np.ndarray(shape=(batch_size), dtype=np.int32)
+  labels = np.ndarray(shape=(batch_size, 1), dtype=np.int32)
+  span = 2 * skip_window + 1 # [ skip_window target skip_window ]
+  buffer = collections.deque(maxlen=span)
+  for _ in range(span):
+    buffer.append(data[data_index])
+    data_index = (data_index + 1) % len(data)
+  for i in range(batch_size // num_skips):
+    target = skip_window  # target label at the center of the buffer
+    targets_to_avoid = [ skip_window ]
+    for j in range(num_skips):
+      while target in targets_to_avoid:
+        target = random.randint(0, span - 1)
+      targets_to_avoid.append(target)
+      batch[i * num_skips + j] = buffer[skip_window]
+      labels[i * num_skips + j, 0] = buffer[target]
+    buffer.append(data[data_index])
+    data_index = (data_index + 1) % len(data)
+  return batch, labels
+
+print('data:', [reverse_dictionary[di] for di in data[:8]])
+
+for num_skips, skip_window in [(2, 1), (4, 2)]:
+    data_index = 0
+    batch, labels = generate_batch(batch_size=8, num_skips=num_skips, skip_window=skip_window)
+    print('\nwith num_skips = %d and skip_window = %d:' % (num_skips, skip_window))
+    print('    batch:', [reverse_dictionary[bi] for bi in batch])
+    print('    labels:', [reverse_dictionary[li] for li in labels.reshape(8)])
 #
 #
 #batch_size = 128
@@ -201,7 +214,7 @@ del words  # Hint to reduce memory.
 #                    close_word = reverse_dictionary[nearest[k]]
 #                    log = '%s %s,' % (log, close_word)
 #                print(log)
-#      final_embeddings = normalized_embeddings.eval()
+#    final_embeddings = normalized_embeddings.eval()
 #
 #num_points = 400
 #
@@ -259,7 +272,15 @@ for bag_window in [1, 2]:
     print('    batch:', [[reverse_dictionary[w] for w in bi] for bi in batch])  
     print('    labels:', [reverse_dictionary[li] for li in labels.reshape(4)])
 
-
+#with bag_window = 2, batch_size = 4:
+#    ==> batch = array([[5234, 3081,    6,  195],
+#       [3081,   12,  195,    2],
+#       [  12,    6,    2, 3134],
+#       [   6,  195, 3134,   46]], dtype=int32)
+#    ==> labels = array([[ 12],
+#       [  6],
+#       [195],
+#       [  2]], dtype=int32)
 
 batch_size = 128
 embedding_size = 128 # Dimension of the embedding vector.

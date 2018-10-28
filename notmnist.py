@@ -214,7 +214,7 @@ pickle_file = os.path.join(data_root, 'notMNIST.pickle')
 try:
   f = open(pickle_file, 'wb')
   save = {
-    'train_dataset': 0,
+    'train_dataset': train_dataset,
     'train_labels': train_labels,
     'valid_dataset': valid_dataset,
     'valid_labels': valid_labels,
