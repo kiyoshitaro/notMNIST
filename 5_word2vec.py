@@ -316,10 +316,9 @@ with graph.as_default(), tf.device('/cpu:0'):
   # Look up embeddings for inputs.
     embeds = tf.nn.embedding_lookup(embeddings, train_dataset)
   # Compute the softmax loss, using a sample of the negative labels each time.
-    loss = tf.reduce_mean(
-
-            tf.nn.sampled_softmax_loss(softmax_weights, softmax_biases, tf.reduce_sum(embeds, 1),
-                               train_labels, num_sampled, vocabulary_size))
+    temp = tf.nn.sampled_softmax_loss(softmax_weights, softmax_biases, train_labels, tf.reduce_sum(embeds, 1),
+                                num_sampled, vocabulary_size)
+    loss = tf.reduce_mean(temp)
 
 
   # Optimizer.
@@ -344,6 +343,7 @@ with tf.Session(graph=graph) as session:
         batch_data, batch_labels = generate_batch(
                 batch_size, bag_window)
         feed_dict = {train_dataset : batch_data, train_labels : batch_labels}
+       
         _, l = session.run([optimizer, loss], feed_dict=feed_dict)
         average_loss += l
         if step % 2000 == 0:
@@ -355,6 +355,8 @@ with tf.Session(graph=graph) as session:
     # note that this is expensive (~20% slowdown if computed every 500 steps)
         if step % 10000 == 0:
             sim = similarity.eval()
+#            tmp = temp.eval()
+#            embedss = embeds.eval()
             for i in range(valid_size):
                 valid_word = reverse_dictionary[valid_examples[i]]
                 top_k = 8 # number of nearest neighbors

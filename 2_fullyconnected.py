@@ -109,10 +109,10 @@ with tf.Session(graph=graph) as session:
     batch_labels = train_labels[offset:(offset + batch_size), :]
     feed_dict = {tf_train_dataset : batch_data, tf_train_labels : batch_labels}
 
-    if step % 10 == 0:
-        summary_str = mse_summary.eval(feed_dict=feed_dict)
+#    if step % 10 == 0:
+#        summary_str = mse_summary.eval(feed_dict=feed_dict)
 #        step = offset * n_batches + batch_index
-        file_writer.add_summary(summary_str, step)
+#        file_writer.add_summary(summary_str, step)
     _, l, predictions = session.run(
       [optimizer, loss, train_prediction], feed_dict=feed_dict)
     if (step % 500 == 0):
